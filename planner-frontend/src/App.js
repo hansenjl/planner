@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Signup from "./Signup";
+import MainRouting from "./MainRouting";
+import { connect } from "react-redux";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Activity Planner!</h1>
       </header>
+      {props.loggedIn ? <MainRouting currentUser={props.currentUser} /> : <Signup />
+      }
     </div>
   );
 }
-
-export default App;
+const mSTP = (state) => {
+  console.log(state.user.loggedIn);
+  return {
+    loggedIn: state.user.loggedIn,
+    currentUser: state.user.currentUser,
+  };
+};
+export default connect(mSTP)(App);
