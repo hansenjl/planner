@@ -5,20 +5,34 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+User
+- email - must be unique
+- has_many trips
+- has many activities through trips
 
-* System dependencies
+Activity
+- length of time in minutes
+- location (future plans - add in google map api integration)
+- name
+- description
+- cost
+- supplies
+- belongs_to timeslot (optional)
+- belongs_to trip
 
-* Configuration
+Trip
+- belongs_to :user
+- name
+- starting date
+- ending date   & time ??
+- has_many activities
+- has many timeslots
 
-* Database creation
+Timeslot
+- starttime
+- endtime
+- trip_id
+- has_many activities
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
